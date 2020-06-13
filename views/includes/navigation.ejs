@@ -1,0 +1,81 @@
+<body>
+    <div class="backdrop"></div>
+    <header class="main-header">
+        <button id="side-menu-toggle">Menu</button>
+        <nav class=main-header__nav>
+            <ul class="main-header__item-list">
+                <li class="main-header__item">
+                    <a class="<%= pagePath==='shop'? 'active':'' %>" href="/">Shop</a></li>
+                <li class="main-header__item">
+                        <a class="<%= pagePath==='products'? 'active':'' %>"href="/products">Products</a></li>
+                <% if (isAuth) { %>
+                <li class="main-header__item">
+                    <a class="<%= pagePath==='cart'? 'active':'' %>"href="/cart">My Cart</a></li>
+                <li class="main-header__item">
+                    <a class="<%= pagePath==='orders'? 'active':'' %>"href="/orders">Orders</a></li>
+                <li class="main-header__item">
+                    <a class="<%= pagePath==='product'? 'active':'' %>"href="/admin/add-product">Add Product</a></li>
+                <li class="main-header__item">
+                    <a class="<%= pagePath==='adminproducts'? 'active':'' %>"href="/admin/products">Admin Product</a></li>
+                    <%} %>
+                </ul>
+                
+            <ul class="main-header__item-list">
+                <% if(!isAuth){ %>
+                <li class="main-header__item">
+                    <a class="<%= pagePath === 'login' ? 'active' : '' %>" href="/login">Login</a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= pagePath === '/signup' ? 'active' : '' %>" href="/signup">Signup</a>
+                </li>
+                <%} else {%>
+                <li class="main-header__item">
+                    <form action="/logout" method="POST">
+                    <button type="submit">Logout</button>
+                    </form>
+                </li>
+                <%} %>    
+            </ul>
+        </nav>
+    </header>
+    <nav class="mobile-nav">
+        <ul class="mobile-nav__item-list">
+            <li class="mobile-nav__item">
+                <a class="<%= pagePath === '/' ? 'active' : '' %>" href="/">Shop</a>
+            </li>
+            <li class="mobile-nav__item">
+                <a class="<%= pagePath === '/products' ? 'active' : '' %>" href="/products">Products</a>
+            </li>
+            <% if (isAuth) { %>
+                <li class="mobile-nav__item">
+                    <a class="<%= pagePath === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
+                </li>
+                <li class="mobile-nav__item">
+                    <a class="<%= pagePath === '/orders' ? 'active' : '' %>" href="/orders">Orders</a>
+                </li>
+                <li class="mobile-nav__item">
+                    <a class="<%= pagePath === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Product
+                    </a>
+                </li>
+                <li class="mobile-nav__item">
+                    <a class="<%= pagePath === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin Products
+                    </a>
+                </li>
+            <% } %>
+            <% if (!isAuth) { %>
+                <li class="mobile-nav__item">
+                    <a class="<%= pagePath === '/login' ? 'active' : '' %>" href="/login">Login</a>
+                </li>
+                <li class="mobile-nav__item">
+                    <a class="<%= pagePath === '/signup' ? 'active' : '' %>" href="/signup">Signup</a>
+                </li>
+    
+            <% } else { %>
+                <li class="mobile-nav__item">
+                    <form action="/logout" method="post">
+                        <button type="submit">Logout</button>
+                    </form>
+                </li>
+            <% } %>
+        </ul>
+    </nav>

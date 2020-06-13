@@ -1,0 +1,20 @@
+<%- include('../includes/header.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+<main class="centered">
+
+<h1> <%= prods.title %></h1>
+<hr>
+<div>
+    <img class="bookedit" src="https://cdn.pixabay.com/photo/2016/03/31/20/51/book-1296045_960_720.png" alt="A Book">
+</div>
+<h2><%=prods.price %></h2>
+<p><%=prods.desc %></p>
+<% if(isAuth){ %>
+<Form action="/cart" method="POST">
+    <button class="btn" type="submit">Add to Cart</button>
+    <input type="hidden" name="productId" value="<%= prods._id %>" >
+</Form>
+<% } %>
+</main> 
+<%- include('../includes/footer.ejs') %>
+    

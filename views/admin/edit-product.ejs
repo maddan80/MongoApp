@@ -1,0 +1,27 @@
+<%- include('../includes/header.ejs') %>
+<%- include('../includes/navigation.ejs') %>
+
+   <main>
+       <form class="product-form" action="/admin/<% if (editing) { %>modify-product<% } else { %>add-product<% } %>" method="POST">
+           <div class="form-control">
+               <label for="title">Title</label>
+                
+               <span><input type="text" name="title" id="title" value="<%if (editing) {%><%=prod.title%><%}%>"></span>
+           </div>
+           <div class="form-control">
+               <label for="desc">Description</label>
+                
+               <span><input type="text" name="desc" id="desc"value="<%if (editing) {%><%=prod.desc%><%}%>"></span>
+           </div>
+           <div class="form-control">
+               <label for="price">Price</label>
+               <span><input type="number" name="price" id="price" step="0.01" value="<%if (editing) {%><%=prod.price%><%}%>"></span>
+           </div>
+           <div class="form-control">
+             <span><input type="hidden" name="id" id="price" value="<%if (editing) {%><%=prod._id%><%}%>"></span>
+        </div>
+        
+           <button class="btn"  type="submit"><% if(editing) { %> Edit Product <% } else { %> Add Product <% } %></button>
+       </form>
+   </main>
+   <%- include('../includes/footer.ejs') %>
